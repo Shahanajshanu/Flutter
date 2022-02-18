@@ -1,0 +1,35 @@
+final _errorMessage = 'Username and Password doesnot match';
+      //Snackbar
+      ScaffoldMessenger.of(ctx).showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.red,
+          margin: EdgeInsets.all(10),
+          content: Text(_errorMessage),
+          duration: Duration(seconds: 10),
+        ),
+      );
+
+      // Alert Dialog
+      showDialog(
+          context: ctx,
+          builder: (ctx1) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text(_errorMessage),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(ctx1).pop();
+                  },
+                  child: Text('Close'),
+                ),
+              ],
+            );
+          });
+
+      //Show Text
+      setState(() {
+        _isDataMatched = false;
+      });
+    }
